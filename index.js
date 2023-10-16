@@ -20,6 +20,41 @@ getImageBtn.addEventListener('click', renderCat)
 
 //Functions
 
+//getEmotionsArray
+
+function getEmotionsArray(cats){
+    const emotionsArray = []
+    for (let cat of cats) {
+        for (let emotions of cat.emotionTags){
+            if(!emotionsArray.includes(emotions)){
+                emotionsArray.push(emotions)
+            }
+            
+        }        
+    }
+return emotionsArray
+}
+
+//renderEmotionRadios
+
+function renderEmotionRadios (cats) {
+    let radioItems = ``
+    const emotions = getEmotionsArray(cats)
+    for (let emotion of emotions) {
+        if(!emotion.includes(emotions)) {
+            radioItems += `
+                    <div class = "radio">
+                    <label for = "${emotion}">${emotion}</label>
+                    <input name = "emotions"type = "radio" id = ${emotion} value = "${emotion}"> 
+                    </div>  
+                    `
+        }                            
+    }
+    emotionRadios.innerHTML = radioItems
+}
+
+renderEmotionRadios(catsData)
+
 //highlightCheckedOption
 
 function highlightCheckedOption(e) {
@@ -88,40 +123,7 @@ function getMatchingCatsArray() {
 }
 
 
-//getEmotionsArray
 
-function getEmotionsArray(cats){
-    const emotionsArray = []
-    for (let cat of cats) {
-        for (let emotions of cat.emotionTags){
-            if(!emotionsArray.includes(emotions)){
-                emotionsArray.push(emotions)
-            }
-            
-        }        
-    }
-return emotionsArray
-}
-
-//renderEmotionRadios
-
-function renderEmotionRadios (cats) {
-    let radioItems = ``
-    const emotions = getEmotionsArray(cats)
-    for (let emotion of emotions) {
-        if(!emotion.includes(emotions)) {
-            radioItems += `
-                    <div class = "radio">
-                    <label for = "${emotion}">${emotion}</label>
-                    <input name = "emotions"type = "radio" id = ${emotion} value = "${emotion}"> 
-                    </div>  
-                    `
-        }                            
-    }
-    emotionRadios.innerHTML = radioItems
-}
-
-renderEmotionRadios(catsData)
 
 //closeModal
 function closeModal() {
