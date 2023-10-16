@@ -30,10 +30,7 @@ function highlightCheckedOption(e) {
     document.getElementById(e.target.id).parentElement.classList.add('highlight')
 }
 
-//closeModal
-function closeModal() {
-    memeModal.style.display = 'none'
-}
+
 
 //renderCat
 
@@ -125,3 +122,8 @@ function renderEmotionRadios (cats) {
 }
 
 renderEmotionRadios(catsData)
+
+//closeModal
+function closeModal() {
+    memeModal.style.display = 'none'
+}
